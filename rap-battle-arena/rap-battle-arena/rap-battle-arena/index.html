@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rap Battle Arena</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg">
+<meta name="theme-color" content="#0d0a1f">
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+<section class="screen on" id="home">
+  <div class="hero"><div class="vinyl"></div><div><h1>Rap Battle<span>Arena</span></h1><p class="s">1 gegen 1. Eure Beats, euer Twitch-Chat entscheidet.</p></div></div>
+  <div class="card">
+    <h2><em>1</em>Twitch verbinden</h2>
+    <div class="row"><button id="tw">Mit Twitch verbinden</button><div class="me hide" id="meBox"><img id="meImg" alt=""><b id="meName"></b></div></div>
+    <p class="err hide" id="err"></p>
+  </div>
+  <div class="card">
+    <h2><em>2</em>Battle starten oder beitreten</h2>
+    <div class="row"><button id="mk" disabled>Battle erstellen</button></div>
+    <div class="row" style="margin-top:12px"><input id="jc" placeholder="Code vom Gegner" maxlength="5" autocapitalize="characters"><button id="jn" class="g" disabled>Beitreten</button></div>
+    <p class="s" style="margin-top:10px">Ohne verbundenen Twitch-Account kannst du nicht spielen. Zuschauer brauchen nur den Link.</p>
+  </div>
+</section>
+
+<section class="screen" id="lobby">
+  <h1 style="font-size:clamp(1.8rem,6vw,3rem)">Lobby</h1>
+  <div class="card ho">
+    <p class="s">Gib deinem Gegner diesen Code:</p>
+    <div id="code">-----</div>
+    <div class="row" style="margin-top:10px"><input id="link" readonly><button id="cp" class="g">Zuschauer-Link kopieren</button></div>
+  </div>
+  <div class="slots"><div class="slot f" id="lp1"></div><div class="slot" id="lp2">Warte auf Gegner…</div></div>
+  <div class="card ho">
+    <h2>10 Beats (SoundCloud oder Apple Music)</h2>
+    <p class="s" style="margin-bottom:8px">Pro Zeile ein Link. Jeder Song ist eine Runde.</p>
+    <textarea id="songs" placeholder="https://soundcloud.com/...&#10;https://music.apple.com/..."></textarea>
+    <div class="row" style="margin-top:10px"><label>Sekunden pro Rap:</label><input id="turn" type="number" min="10" max="90" value="25" style="width:90px;flex:none"><button id="go" disabled>Battle starten</button></div>
+  </div>
+  <p class="s wt hide" style="margin-top:16px">Der Host startet das Battle gleich…</p>
+</section>
+
+<section class="screen" id="arena">
+  <div class="top"><span id="rd"></span><span id="role"></span></div>
+  <div class="vs">
+    <div class="pl t1" id="c1"><img id="i1" alt=""><b id="n1"></b><small>Team 1</small><div><span class="sc" id="s1">0</span></div><div class="eq"><i></i><i></i><i></i><i></i><i></i></div></div>
+    <div class="vsb">VS</div>
+    <div class="pl t2" id="c2"><img id="i2" alt=""><b id="n2"></b><small>Team 2</small><div><span class="sc" id="s2">0</span></div><div class="eq"><i></i><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="stage">
+    <div id="lbl"></div>
+    <div id="tm"></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="votes hide" id="vt"><i id="v1">0</i><i id="v2">0</i></div>
+    <button id="again" class="hide">Nochmal spielen</button>
+  </div>
+</section>
+
+<div id="music"><iframe id="mf" allow="autoplay *; encrypted-media *" title="Beat"></iframe></div>
+
+<div id="chat" class="hide">
+  <div id="msgs"></div>
+  <div id="cin"><input id="ci" placeholder="Chat… (Zuschauer-Votes: 1 oder 2)" maxlength="200"><button id="cs">Senden</button></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
